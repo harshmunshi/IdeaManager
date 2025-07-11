@@ -189,28 +189,32 @@ export default function IdeaCard({ idea, onGenerateIdeas, onIdeaDeleted }: IdeaC
         {/* Voting and Interaction Section */}
         <div className="border-t pt-4 space-y-4">
           {/* Voting Buttons */}
-          <div className="flex items-center justify-between">
-            <VotingButtons
-              ideaId={idea.id}
-              voteCounts={{
-                help_build_count: voteCounts.help_build_count,
-                use_service_count: voteCounts.use_service_count,
-                user_help_build_vote: voteCounts.user_help_build_vote,
-                user_use_service_vote: voteCounts.user_use_service_vote
-              }}
-              onVoteUpdate={(newCounts) => setVoteCounts(prev => ({ ...prev, ...newCounts }))}
-            />
+          <div className="flex items-center justify-between gap-2 flex-wrap sm:flex-nowrap">
+            <div className="flex-shrink-0">
+              <VotingButtons
+                ideaId={idea.id}
+                voteCounts={{
+                  help_build_count: voteCounts.help_build_count,
+                  use_service_count: voteCounts.use_service_count,
+                  user_help_build_vote: voteCounts.user_help_build_vote,
+                  user_use_service_vote: voteCounts.user_use_service_vote
+                }}
+                onVoteUpdate={(newCounts) => setVoteCounts(prev => ({ ...prev, ...newCounts }))}
+              />
+            </div>
             
-            <UpvoteButtons
-              ideaId={idea.id}
-              voteCounts={{
-                upvote_count: voteCounts.upvote_count,
-                downvote_count: voteCounts.downvote_count,
-                net_votes: voteCounts.net_votes,
-                user_upvote_status: voteCounts.user_upvote_status
-              }}
-              onVoteUpdate={(newCounts) => setVoteCounts(prev => ({ ...prev, ...newCounts }))}
-            />
+            <div className="flex-shrink-0">
+              <UpvoteButtons
+                ideaId={idea.id}
+                voteCounts={{
+                  upvote_count: voteCounts.upvote_count,
+                  downvote_count: voteCounts.downvote_count,
+                  net_votes: voteCounts.net_votes,
+                  user_upvote_status: voteCounts.user_upvote_status
+                }}
+                onVoteUpdate={(newCounts) => setVoteCounts(prev => ({ ...prev, ...newCounts }))}
+              />
+            </div>
           </div>
 
           {/* Comments Section */}

@@ -72,12 +72,12 @@ export default function VotingButtons({ ideaId, voteCounts, onVoteUpdate }: Voti
   }
 
   return (
-    <div className="flex items-center gap-3">
+    <div className="flex items-center gap-2 sm:gap-3 flex-wrap">
       {/* Help Build Vote */}
       <motion.button
         onClick={() => handleVote('help_build')}
         disabled={isLoading}
-        className={`flex items-center gap-2 px-3 py-1.5 rounded-full text-sm font-medium transition-all ${
+        className={`flex items-center gap-1 sm:gap-2 px-2 sm:px-3 py-1.5 rounded-full text-xs sm:text-sm font-medium transition-all ${
           voteCounts.user_help_build_vote
             ? 'bg-blue-100 text-blue-800 border-2 border-blue-200'
             : 'bg-gray-100 text-gray-700 border-2 border-transparent hover:bg-blue-50 hover:text-blue-600'
@@ -86,12 +86,13 @@ export default function VotingButtons({ ideaId, voteCounts, onVoteUpdate }: Voti
         whileTap={{ scale: 0.95 }}
       >
         {voteCounts.user_help_build_vote ? (
-          <HandRaisedIconSolid className="h-4 w-4" />
+          <HandRaisedIconSolid className="h-3 w-3 sm:h-4 sm:w-4" />
         ) : (
-          <HandRaisedIcon className="h-4 w-4" />
+          <HandRaisedIcon className="h-3 w-3 sm:h-4 sm:w-4" />
         )}
-        <span>Help Build</span>
-        <span className="bg-white bg-opacity-60 px-2 py-0.5 rounded-full text-xs">
+        <span className="hidden sm:inline">Help Build</span>
+        <span className="sm:hidden">Help</span>
+        <span className="bg-white bg-opacity-60 px-1.5 sm:px-2 py-0.5 rounded-full text-xs">
           {voteCounts.help_build_count}
         </span>
       </motion.button>
@@ -100,7 +101,7 @@ export default function VotingButtons({ ideaId, voteCounts, onVoteUpdate }: Voti
       <motion.button
         onClick={() => handleVote('use_service')}
         disabled={isLoading}
-        className={`flex items-center gap-2 px-3 py-1.5 rounded-full text-sm font-medium transition-all ${
+        className={`flex items-center gap-1 sm:gap-2 px-2 sm:px-3 py-1.5 rounded-full text-xs sm:text-sm font-medium transition-all ${
           voteCounts.user_use_service_vote
             ? 'bg-green-100 text-green-800 border-2 border-green-200'
             : 'bg-gray-100 text-gray-700 border-2 border-transparent hover:bg-green-50 hover:text-green-600'
@@ -109,12 +110,13 @@ export default function VotingButtons({ ideaId, voteCounts, onVoteUpdate }: Voti
         whileTap={{ scale: 0.95 }}
       >
         {voteCounts.user_use_service_vote ? (
-          <UserIconSolid className="h-4 w-4" />
+          <UserIconSolid className="h-3 w-3 sm:h-4 sm:w-4" />
         ) : (
-          <UserIcon className="h-4 w-4" />
+          <UserIcon className="h-3 w-3 sm:h-4 sm:w-4" />
         )}
-        <span>Would Use</span>
-        <span className="bg-white bg-opacity-60 px-2 py-0.5 rounded-full text-xs">
+        <span className="hidden sm:inline">Would Use</span>
+        <span className="sm:hidden">Use</span>
+        <span className="bg-white bg-opacity-60 px-1.5 sm:px-2 py-0.5 rounded-full text-xs">
           {voteCounts.use_service_count}
         </span>
       </motion.button>

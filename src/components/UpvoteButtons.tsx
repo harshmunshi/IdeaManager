@@ -84,12 +84,12 @@ export default function UpvoteButtons({ ideaId, voteCounts, onVoteUpdate }: Upvo
   }
 
   return (
-    <div className="flex items-center gap-1">
+    <div className="flex items-center gap-1 flex-shrink-0">
       {/* Upvote Button */}
       <motion.button
         onClick={() => handleVote(1)}
         disabled={isLoading}
-        className={`flex items-center justify-center p-2 rounded-full transition-all ${
+        className={`flex items-center justify-center p-1.5 sm:p-2 rounded-full transition-all ${
           voteCounts.user_upvote_status === 1
             ? 'bg-green-100 text-green-600 border-2 border-green-200'
             : 'bg-gray-100 text-gray-500 border-2 border-transparent hover:bg-green-50 hover:text-green-600'
@@ -98,22 +98,22 @@ export default function UpvoteButtons({ ideaId, voteCounts, onVoteUpdate }: Upvo
         whileTap={{ scale: 0.9 }}
       >
         {voteCounts.user_upvote_status === 1 ? (
-          <ArrowUpIconSolid className="h-5 w-5" />
+          <ArrowUpIconSolid className="h-4 w-4 sm:h-5 sm:w-5" />
         ) : (
-          <ArrowUpIcon className="h-5 w-5" />
+          <ArrowUpIcon className="h-4 w-4 sm:h-5 sm:w-5" />
         )}
       </motion.button>
 
       {/* Net Votes Display */}
-      <div className="flex flex-col items-center min-w-[40px]">
-        <span className={`text-sm font-semibold ${
+      <div className="flex flex-col items-center min-w-[32px] sm:min-w-[40px] max-w-[60px]">
+        <span className={`text-xs sm:text-sm font-semibold leading-tight ${
           voteCounts.net_votes > 0 ? 'text-green-600' : 
           voteCounts.net_votes < 0 ? 'text-red-600' : 
           'text-gray-600'
         }`}>
           {voteCounts.net_votes > 0 ? '+' : ''}{voteCounts.net_votes}
         </span>
-        <span className="text-xs text-gray-400">
+        <span className="text-xs text-gray-400 leading-tight hidden sm:block">
           {voteCounts.upvote_count + voteCounts.downvote_count} votes
         </span>
       </div>
@@ -122,7 +122,7 @@ export default function UpvoteButtons({ ideaId, voteCounts, onVoteUpdate }: Upvo
       <motion.button
         onClick={() => handleVote(-1)}
         disabled={isLoading}
-        className={`flex items-center justify-center p-2 rounded-full transition-all ${
+        className={`flex items-center justify-center p-1.5 sm:p-2 rounded-full transition-all ${
           voteCounts.user_upvote_status === -1
             ? 'bg-red-100 text-red-600 border-2 border-red-200'
             : 'bg-gray-100 text-gray-500 border-2 border-transparent hover:bg-red-50 hover:text-red-600'
@@ -131,9 +131,9 @@ export default function UpvoteButtons({ ideaId, voteCounts, onVoteUpdate }: Upvo
         whileTap={{ scale: 0.9 }}
       >
         {voteCounts.user_upvote_status === -1 ? (
-          <ArrowDownIconSolid className="h-5 w-5" />
+          <ArrowDownIconSolid className="h-4 w-4 sm:h-5 sm:w-5" />
         ) : (
-          <ArrowDownIcon className="h-5 w-5" />
+          <ArrowDownIcon className="h-4 w-4 sm:h-5 sm:w-5" />
         )}
       </motion.button>
     </div>
