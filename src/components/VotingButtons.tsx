@@ -72,27 +72,31 @@ export default function VotingButtons({ ideaId, voteCounts, onVoteUpdate }: Voti
   }
 
   return (
-    <div className="flex items-center gap-2 sm:gap-3 flex-wrap">
+    <div className="flex items-center justify-center gap-1.5 xs:gap-2 sm:gap-3 max-w-full overflow-hidden">
       {/* Help Build Vote */}
       <motion.button
         onClick={() => handleVote('help_build')}
         disabled={isLoading}
-        className={`flex items-center gap-1 sm:gap-2 px-2 sm:px-3 py-1.5 rounded-full text-xs sm:text-sm font-medium transition-all ${
+        className={`flex items-center gap-1 xs:gap-1.5 sm:gap-2 px-2 xs:px-2.5 sm:px-3 py-1.5 xs:py-2 rounded-lg xs:rounded-xl transition-all border-2 text-xs xs:text-sm font-medium min-w-0 ${
           voteCounts.user_help_build_vote
-            ? 'bg-blue-100 text-blue-800 border-2 border-blue-200'
-            : 'bg-gray-100 text-gray-700 border-2 border-transparent hover:bg-blue-50 hover:text-blue-600'
+            ? 'bg-blue-100 text-blue-800 border-blue-200'
+            : 'bg-white text-gray-700 border-gray-200 hover:bg-blue-50 hover:text-blue-600 hover:border-blue-300'
         }`}
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
+        style={{ 
+          WebkitAppearance: 'none',
+          WebkitTapHighlightColor: 'transparent'
+        } as React.CSSProperties}
+        whileHover={{ scale: 1.02 }}
+        whileTap={{ scale: 0.98 }}
       >
         {voteCounts.user_help_build_vote ? (
-          <HandRaisedIconSolid className="h-3 w-3 sm:h-4 sm:w-4" />
+          <HandRaisedIconSolid className="w-3 h-3 xs:w-3.5 xs:h-3.5 sm:w-4 sm:h-4 flex-shrink-0" />
         ) : (
-          <HandRaisedIcon className="h-3 w-3 sm:h-4 sm:w-4" />
+          <HandRaisedIcon className="w-3 h-3 xs:w-3.5 xs:h-3.5 sm:w-4 sm:h-4 flex-shrink-0" />
         )}
-        <span className="hidden sm:inline">Help Build</span>
-        <span className="sm:hidden">Help</span>
-        <span className="bg-white bg-opacity-60 px-1.5 sm:px-2 py-0.5 rounded-full text-xs">
+        <span className="hidden xs:inline lg:hidden xl:inline">Help Build</span>
+        <span className="xs:hidden lg:inline xl:hidden">Help</span>
+        <span className="bg-gray-100 px-1 xs:px-1.5 py-0.5 rounded-md text-xs font-medium min-w-[18px] xs:min-w-[20px] text-center">
           {voteCounts.help_build_count}
         </span>
       </motion.button>
@@ -101,22 +105,26 @@ export default function VotingButtons({ ideaId, voteCounts, onVoteUpdate }: Voti
       <motion.button
         onClick={() => handleVote('use_service')}
         disabled={isLoading}
-        className={`flex items-center gap-1 sm:gap-2 px-2 sm:px-3 py-1.5 rounded-full text-xs sm:text-sm font-medium transition-all ${
+        className={`flex items-center gap-1 xs:gap-1.5 sm:gap-2 px-2 xs:px-2.5 sm:px-3 py-1.5 xs:py-2 rounded-lg xs:rounded-xl transition-all border-2 text-xs xs:text-sm font-medium min-w-0 ${
           voteCounts.user_use_service_vote
-            ? 'bg-green-100 text-green-800 border-2 border-green-200'
-            : 'bg-gray-100 text-gray-700 border-2 border-transparent hover:bg-green-50 hover:text-green-600'
+            ? 'bg-green-100 text-green-800 border-green-200'
+            : 'bg-white text-gray-700 border-gray-200 hover:bg-green-50 hover:text-green-600 hover:border-green-300'
         }`}
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
+        style={{ 
+          WebkitAppearance: 'none',
+          WebkitTapHighlightColor: 'transparent'
+        } as React.CSSProperties}
+        whileHover={{ scale: 1.02 }}
+        whileTap={{ scale: 0.98 }}
       >
         {voteCounts.user_use_service_vote ? (
-          <UserIconSolid className="h-3 w-3 sm:h-4 sm:w-4" />
+          <UserIconSolid className="w-3 h-3 xs:w-3.5 xs:h-3.5 sm:w-4 sm:h-4 flex-shrink-0" />
         ) : (
-          <UserIcon className="h-3 w-3 sm:h-4 sm:w-4" />
+          <UserIcon className="w-3 h-3 xs:w-3.5 xs:h-3.5 sm:w-4 sm:h-4 flex-shrink-0" />
         )}
-        <span className="hidden sm:inline">Would Use</span>
-        <span className="sm:hidden">Use</span>
-        <span className="bg-white bg-opacity-60 px-1.5 sm:px-2 py-0.5 rounded-full text-xs">
+        <span className="hidden xs:inline lg:hidden xl:inline">Would Use</span>
+        <span className="xs:hidden lg:inline xl:hidden">Use</span>
+        <span className="bg-gray-100 px-1 xs:px-1.5 py-0.5 rounded-md text-xs font-medium min-w-[18px] xs:min-w-[20px] text-center">
           {voteCounts.use_service_count}
         </span>
       </motion.button>

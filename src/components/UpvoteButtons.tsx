@@ -84,36 +84,40 @@ export default function UpvoteButtons({ ideaId, voteCounts, onVoteUpdate }: Upvo
   }
 
   return (
-    <div className="flex items-center gap-1 flex-shrink-0">
+    <div className="flex items-center gap-1 xs:gap-1.5 sm:gap-2 flex-shrink-0 max-w-full overflow-hidden">
       {/* Upvote Button */}
       <motion.button
         onClick={() => handleVote(1)}
         disabled={isLoading}
-        className={`flex items-center justify-center p-1.5 sm:p-2 rounded-full transition-all ${
+        className={`flex items-center justify-center w-8 h-8 xs:w-9 xs:h-9 sm:w-10 sm:h-10 rounded-lg xs:rounded-xl transition-all border-2 ${
           voteCounts.user_upvote_status === 1
-            ? 'bg-green-100 text-green-600 border-2 border-green-200'
-            : 'bg-gray-100 text-gray-500 border-2 border-transparent hover:bg-green-50 hover:text-green-600'
+            ? 'bg-green-100 text-green-600 border-green-200'
+            : 'bg-white text-gray-500 border-gray-200 hover:bg-green-50 hover:text-green-600 hover:border-green-300'
         }`}
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
+        style={{ 
+          WebkitAppearance: 'none',
+          WebkitTapHighlightColor: 'transparent'
+        } as React.CSSProperties}
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
       >
         {voteCounts.user_upvote_status === 1 ? (
-          <ArrowUpIconSolid className="h-4 w-4 sm:h-5 sm:w-5" />
+          <ArrowUpIconSolid className="w-3 h-3 xs:w-3.5 xs:h-3.5 sm:w-4 sm:h-4 lg:w-5 lg:h-5" />
         ) : (
-          <ArrowUpIcon className="h-4 w-4 sm:h-5 sm:w-5" />
+          <ArrowUpIcon className="w-3 h-3 xs:w-3.5 xs:h-3.5 sm:w-4 sm:h-4 lg:w-5 lg:h-5" />
         )}
       </motion.button>
 
       {/* Net Votes Display */}
-      <div className="flex flex-col items-center min-w-[32px] sm:min-w-[40px] max-w-[60px]">
-        <span className={`text-xs sm:text-sm font-semibold leading-tight ${
+      <div className="flex flex-col items-center min-w-[28px] xs:min-w-[32px] sm:min-w-[36px] lg:min-w-[40px] max-w-[60px] px-0.5 xs:px-1">
+        <span className={`text-xs xs:text-sm lg:text-base font-semibold leading-tight ${
           voteCounts.net_votes > 0 ? 'text-green-600' : 
           voteCounts.net_votes < 0 ? 'text-red-600' : 
           'text-gray-600'
         }`}>
           {voteCounts.net_votes > 0 ? '+' : ''}{voteCounts.net_votes}
         </span>
-        <span className="text-xs text-gray-400 leading-tight hidden sm:block">
+        <span className="text-xs text-gray-400 leading-tight hidden xs:block text-center">
           {voteCounts.upvote_count + voteCounts.downvote_count} votes
         </span>
       </div>
@@ -122,18 +126,22 @@ export default function UpvoteButtons({ ideaId, voteCounts, onVoteUpdate }: Upvo
       <motion.button
         onClick={() => handleVote(-1)}
         disabled={isLoading}
-        className={`flex items-center justify-center p-1.5 sm:p-2 rounded-full transition-all ${
+        className={`flex items-center justify-center w-8 h-8 xs:w-9 xs:h-9 sm:w-10 sm:h-10 rounded-lg xs:rounded-xl transition-all border-2 ${
           voteCounts.user_upvote_status === -1
-            ? 'bg-red-100 text-red-600 border-2 border-red-200'
-            : 'bg-gray-100 text-gray-500 border-2 border-transparent hover:bg-red-50 hover:text-red-600'
+            ? 'bg-red-100 text-red-600 border-red-200'
+            : 'bg-white text-gray-500 border-gray-200 hover:bg-red-50 hover:text-red-600 hover:border-red-300'
         }`}
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
+        style={{ 
+          WebkitAppearance: 'none',
+          WebkitTapHighlightColor: 'transparent'
+        } as React.CSSProperties}
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
       >
         {voteCounts.user_upvote_status === -1 ? (
-          <ArrowDownIconSolid className="h-4 w-4 sm:h-5 sm:w-5" />
+          <ArrowDownIconSolid className="w-3 h-3 xs:w-3.5 xs:h-3.5 sm:w-4 sm:h-4 lg:w-5 lg:h-5" />
         ) : (
-          <ArrowDownIcon className="h-4 w-4 sm:h-5 sm:w-5" />
+          <ArrowDownIcon className="w-3 h-3 xs:w-3.5 xs:h-3.5 sm:w-4 sm:h-4 lg:w-5 lg:h-5" />
         )}
       </motion.button>
     </div>
